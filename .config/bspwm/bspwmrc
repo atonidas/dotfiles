@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# Configure locale
+export LC_ALL="C"
+
+# Configure keymap
+setxkbmap es &
+
+# Set Wallpaper
+xwallpaper --zoom /home/lgc/Pictures/Wallpapers/arch.jpg &
+
+# Configure night mode
+redshift -x
+redshift -O 2700
+
+# Enable Razer Keyboard color profile
+polychromatic-cli -d keyboard -o static -c #00ff0 &
+
+# Enable picom
+picom &
+
+# Enable picom options
+picom --experimental-backends &
+bspc config border_with 0
+
+# Configure virtual desktops
+bspc monitor DP-1 -d VI VII VIII IX X
+bspc monitor DVI-D-0 -d I II III IV V
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# Default bspwm options
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+# Enable mouse focus following in the windows
+bspc config focus_follow_pointer true
+
+# Enable sxhkd shortcuts
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Run autostart scripts
+~/.config/polybar/launch.sh &

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+## Author  : Aditya Shakya
+## Mail    : adi1090x@gmail.com
+## Github  : @adi1090x
+## Twitter : @adi1090x
+
+# Modified by Atonidas
+# Custom - Menu
+# 09 / 11 / 2021
+
+rofi_command="rofi -theme ~/.config/rofi/styles/custom-menu.rasi"
+
+# Links
+work="Work 華"
+dont_disturb="Don't Disturb ﮖ"
+
+# Error msg
+msg() {
+	rofi -theme "$HOME/.config/rofi/applets/styles/message.rasi" -e "$1"
+}
+
+# Variable passed to rofi
+options="$work\n$dont_disturb"
+
+chosen="$(echo -e "$options" | $rofi_command -p "Options" -dmenu -selected-row 0)"
+case $chosen in
+    $work)
+                /home/lgc/scripts/turnon
+		teams > /dev/null 2>1 &
+                linphone > /dev/null 2>1 &
+		krdc >/dev/null 2>1 &
+		firefox -P Trabajo >/dev/null 2>1 &
+        ;;
+    $dont_disturb)
+		if [ "$(dunstctl is-paused)" == "true" ] ; then
+			dunstctl set-paused false
+		else
+			dunstctl set-paused true
+		fi
+        ;;
+esac

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/lgc/.yarn/bin'
+let g:netrw_dirhist_3='/home/lgc/.yarn'
+let g:netrw_dirhist_2='/home/lgc/.config/dconf'
+let g:netrw_dirhist_1='/home/lgc/.config/Unknown Organization'
+let g:netrw_dirhist_0='/home/lgc/.config/balena-etcher-electron'
+let g:netrw_dirhist_9='/home/lgc/.config/cef_user_data/Dictionaries'
+let g:netrw_dirhist_8='/home/lgc/.config/cef_user_data'
+let g:netrw_dirhist_7='/home/lgc/.config/khtml'
+let g:netrw_dirhist_6='/home/lgc/.config/libaccounts-glib'
+let g:netrw_dirhist_5='/home/lgc/.config/old-autostart-scripts'

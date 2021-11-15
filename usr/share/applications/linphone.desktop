@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Linphone
+StartupWMClass=linphone
+Comment=SIP application
+GenericName=SIP Client
+Exec=/usr/bin/linphone > /dev/null 2>1
+Icon=linphone
+Type=Application
+Categories=AudioVideo
+Path=/usr/bin

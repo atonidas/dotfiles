@@ -1,0 +1,9 @@
+[Added Associations]
+application/x-zerosize=vim.desktop;
+text/plain=vim.desktop;
+
+[Default Applications]
+application/x-zerosize=vim.desktop;
+text/plain=vim.desktop;
+x-scheme-handler/etcher=balena-etcher-electron.desktop
+x-scheme-handler/msteams=teams.desktop

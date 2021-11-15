@@ -1,0 +1,90 @@
+# Upgrade repository list pacman
+pacman -Sy
+
+# Partition and format disks 
+This part has to be manual
+
+fdisk /dev/sda
+g
+
+/dev/sda1 1GB EFI
+/dev/sda2 8GB SWAP
+/dev/sda3 XGB /home
+/dev/sda4 XGB /
+
+mkfs.fat /dev/sda1
+mkswap /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+
+#mount / 
+mount /dev/sda4 /mnt
+
+# Export locale
+export LC_ALL="C"
+
+# Install basic software
+pacstrap /mnt base base-devel linux linux-firmware dhcpcd sudo git grub efibootmgr openssh nano go
+
+# Generate fstab
+genfstab -U /mnt >> /mnt/etc/fstb
+
+
+# Add network file
+### vim /etc/systemd/networkd/70-static.ne
+
+# Access in the partition
+arch-chroot /mnt
+
+# Install sudo, git, grub, efibootmgr and ssh
+### pacman -S sudo git grub efibootmgr openssh nano
+
+# Add LGC user
+useradd lgc -G wheel,audio,video
+
+# Change password root and lgc
+passwd
+passwd lgc
+
+# Make home directory
+mkdir /home/lgc
+chown lgc:lgc /home/lgc
+
+# Add lgc to sudoers group
+echo "%lgc ALL=(ALL) ALL" > /etc/sudoers.d/lgc
+
+# Mount EFI partition inside arch-chroot
+mount /dev/sda1 /mnt
+
+# Configure GRUB
+grub-install --target=x86_64-efi --efi-directory=/mnt --bootloader-id=GRUB
+
+# Copy files to EFI partition
+mkdir -p /mnt/EFI/arch
+ cp -a /boot/vmlinuz-linux /mnt/EFI/arch/
+ cp -a /boot/initramfs-linux.img /mnt/EFI/arch/
+ cp -a /boot/initramfs-linux-fallback.img /mnt/EFI/arch/
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# Install yay
+cd /tmp
+git clone https://aur.archlinux.org/yay-git.git
+chown -R lgc:lgc yay-git/
+su lgc
+cd yay-git
+makepkg -si
+
+# Clone dotfiles
+cd ..
+git clone https://github.com/dotfiles.git
+cd dotfiles
+
+# Generate list of packages
+awk '{print $1}' packages > packages2
+
+# Install packages with pacman
+while read -r line; do sudo pacman -S --noconfirm --needed "$line"; done < packages2
+
+# Install packages with yay
+while read -r line; do yay -S --noconfirm --needed "$line"; done < packages2

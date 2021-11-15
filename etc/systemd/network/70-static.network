@@ -1,0 +1,8 @@
+[Match]
+Name=enp33s0
+
+[Network]
+Address=192.168.0.50
+Gateway=192.168.0.1
+DNS=8.8.8.8
+DNS=8.8.6.6

@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[es_ES]=
+Comment=
+Exec=/home/lgc/Games/LoE/LoE.x86_64
+GenericName[es_ES]=
+GenericName=
+Icon=/home/lgc/Games/LoE/LoE_Data/Resources/UnityPlayer.png
+MimeType=
+Name[es_ES]=LoE
+Name=LoE
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
