@@ -17,6 +17,7 @@ polybar audio -c ~/.config/polybar/current.ini &
 
 ## Right bar
 polybar tray -c ~/.config/polybar/current.ini &
+polybar network -c ~/.config/polybar/current.ini &
 polybar power-menu -c ~/.config/polybar/current.ini &
 
 ## Center bar
