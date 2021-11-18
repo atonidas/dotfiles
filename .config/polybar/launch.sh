@@ -19,7 +19,7 @@ polybar host-windows -c ~/.config/polybar/current.ini &
 polybar host-mc -c ~/.config/polybar/current.ini &
 polybar dont-disturb -c ~/.config/polybar/current.ini &
 polybar bluetooth -c ~/.config/polybar/current.ini &
-
+polybar check-updates -c ~/.config/polybar/current.ini &
 
 ## Right bar
 polybar tray -c ~/.config/polybar/current.ini &
