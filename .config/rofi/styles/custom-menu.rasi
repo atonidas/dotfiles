@@ -21,17 +21,19 @@ configuration {
 
 @import "colors.rasi"
 
+
 * {
     background-color:               @background;
     text-color:                     @foreground;
 }
+
 
 window {
     transparency:                   "real";
     border-radius:                  0px;
     location:                       southeast;
 	width:							500px;
-    x-offset:                       -1407px;
+    x-offset:                       -1415px;
     y-offset:                       -870px;
 }
 
