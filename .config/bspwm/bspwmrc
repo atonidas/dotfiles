@@ -46,6 +46,7 @@ bspc rule -a Screenkey manage=off
 # Enable mouse focus following in the windows
 bspc config focus_follow_pointer true
 
+# Enable dark theme for QT
 export QT_STYLE_OVERRIDE=kvantum
 
 # Enable sxhkd shortcuts
