@@ -130,3 +130,12 @@ Print
 
 super + l
 	i3lock
+
+@F1
+	isMuted=`amixer sget Master | tail -n1 | cut -d "[" -f3 | cut -d "]" -f1`; if [[ "$isMuted" == "on" ]]; then amixer set Master muted; else amixer set Master unmuted; fi
+
+@F2
+	amixer set Master 1%- &
+
+@F3
+	amixer set Master 1%+ &
